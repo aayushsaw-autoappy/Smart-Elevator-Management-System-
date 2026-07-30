@@ -1,89 +1,90 @@
 import { ChevronUp, ChevronDown } from "lucide-react";
+// import Lift from "./Lift";
 
-/* ==========================================================
-   FloorPanel Component
-   Parent component that renders all floors.
-========================================================== */
-
-const FloorPanel = () => {
-  const floors = Array.from({ length: 16 }, (_, i) => 16 - i);
+const FloorPanel = ({ lifts, callLift, moveLift }) => {
+  // 15 -> G
+  const floors = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 
   return (
-    <div className="w-70 rounded-xl bg-[#181d27] p-4 border border-gray-700">
-      <h2 className="text-lg font-semibold text-white">
-        Building Directory
+    <div className="bg-[#181d27] border border-gray-700 rounded-xl p-5">
+      <h2 className="text-xl font-bold text-white">
+        Smart Elevator System
       </h2>
 
-      <p className="text-sm text-gray-400 mb-5">
-        Live Shift — 4 lifts · 16 floors
+      <p className="text-gray-400 mb-6">
+        4 Lifts • 16 Floors
       </p>
 
-      <div className="space-y-2">
-        {floors.map((floor) => (
-          <FloorRow key={floor} floor={floor} />
-        ))}
+      <div className="flex gap-6">
+
+        {/* Floor Numbers */}
+        <div className="flex flex-col">
+          {floors.map((floor) => (
+            <FloorNumber
+              key={floor}
+              floor={floor}
+            />
+          ))}
+        </div>
+
+        {/* Lift Area
+        <Lift
+          lifts={lifts}
+          moveLift={moveLift}
+        /> */}
+
+        {/* Call Buttons */}
+        <div className="flex flex-col">
+          {floors.map((floor) => (
+            <CallButtons
+              key={floor}
+              floor={floor}
+              callLift={callLift}
+            />
+          ))}
+        </div>
+
       </div>
     </div>
   );
 };
 
-/* ==========================================================
-   FloorRow Component
-   Displays a single floor with its number and call buttons.
-========================================================== */
-
-const FloorRow = ({ floor }) => {
-  return (
-    <div className="flex items-center justify-between">
-      <FloorNumber floor={floor} />
-      <div className="w-35 bg-white h-20">
-
-      </div>
-      <CallButtons floor={floor} />
-    </div>
-  );
-};
-
-/* ==========================================================
-   FloorNumber Component
-   Displays the floor number.
-========================================================== */
+/* ====================================================== */
 
 const FloorNumber = ({ floor }) => {
   return (
-    <span className="w-8 text-center text-gray-300 font-medium">
-      {String(floor).padStart(2, "0")}
-    </span>
+    <div className="h-14 w-10 flex items-center justify-center text-white font-semibold">
+      {floor === 0 ? "G" : floor}
+    </div>
   );
 };
 
-/* ==========================================================
-   CallButtons Component
-   Displays Up and Down request buttons.
-========================================================== */
+/* ====================================================== */
 
-const CallButtons = ({ floor }) => {
-  const handleRequest = (direction) => {
-    console.log(`Floor ${floor} requested ${direction}`);
-  };
-
+const CallButtons = ({ floor, callLift }) => {
   return (
-    <div className="flex gap-2">
-      {/* Up Button */}
+    <div className="h-14 flex items-center gap-2">
+
       <button
-        onClick={() => handleRequest("UP")}
-        className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#252b39] hover:bg-[#31384a] transition"
+        onClick={() => callLift(floor)}
+        className="w-8 h-8 rounded bg-[#2d3442] hover:bg-[#3b4456] flex items-center justify-center"
       >
-        <ChevronUp size={16} className="text-gray-300" />
+        <ChevronUp
+          size={16}
+          className="text-white"
+        />
       </button>
 
-      {/* Down Button */}
       <button
-        onClick={() => handleRequest("DOWN")}
-        className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#252b39] hover:bg-[#31384a] transition"
+        onClick={() => callLift(floor)}
+        className="w-8 h-8 rounded bg-[#2d3442] hover:bg-[#3b4456] flex items-center justify-center"
       >
-        <ChevronDown size={16} className="text-gray-300" />
+        <ChevronDown
+          size={16}
+          className="text-white"
+        />
       </button>
+
     </div>
   );
 };
