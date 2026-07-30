@@ -8,6 +8,7 @@ module.exports = {
   NUM_FLOORS: 16,
   ELEVATOR_IDS: ['A', 'B', 'C', 'D'],
 
+  
   // Timing constants (all in seconds) — from the spec
   FLOOR_TIME: 30,   // time to move 1 floor
   DOOR_OPEN: 10,

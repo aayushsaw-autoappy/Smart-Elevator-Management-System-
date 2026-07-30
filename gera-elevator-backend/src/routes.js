@@ -10,6 +10,7 @@ router.post('/elevators/:id/step', c.stepElevator);
 
 router.post('/requests/external', c.externalRequest);
 router.post('/requests/internal', c.internalRequest);
+
 router.get('/requests', c.getRequests);
 
 module.exports = router;
