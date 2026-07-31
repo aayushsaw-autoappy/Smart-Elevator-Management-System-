@@ -1,0 +1,97 @@
+.log {
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: 16px 16px 18px;
+}
+
+.log__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.log__title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.log__hint {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.log__empty {
+  font-size: 12.5px;
+  color: var(--text-faint);
+  padding: 14px 2px;
+  margin: 0;
+}
+
+.log__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.log__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 9px;
+  border-radius: var(--radius-sm);
+  background: var(--panel-raised);
+  border: 1px solid var(--line-soft);
+}
+
+.log__badge {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 3px 6px;
+  border-radius: 5px;
+  margin-top: 1px;
+}
+
+.log__badge--external {
+  background: var(--cyan-dim);
+  color: var(--cyan);
+}
+
+.log__badge--internal {
+  background: var(--amber-dim);
+  color: var(--amber);
+}
+
+.log__body {
+  min-width: 0;
+}
+
+.log__line {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.log__arrow {
+  color: var(--text-faint);
+}
+
+.log__meta {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-faint);
+}
